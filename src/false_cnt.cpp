@@ -23,7 +23,7 @@ static auto st() -> void
 }
 
 // Create 32 thread to contend over each cache line, should be perfect contention.
-#define THREAD_CNT 32
+#define THREAD_CNT 8
 
 static std::shared_mutex mut;
 
