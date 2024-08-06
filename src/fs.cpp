@@ -2,14 +2,13 @@
 #include <array>
 #include <cstdint>
 
+#include "constants.hpp"
+
 struct cache_line
 {
-    char padding[56]; // Ryzen 4000 series has 64 byte cache lines
+    char padding[504]; // Ryzen 4000 series has 64 byte cache lines
     uint64_t a;
 };
-
-#define ARRAY_SIZE 100000
-#define TGT_CNT 100000
 
 static std::array<cache_line, ARRAY_SIZE> data;
 
