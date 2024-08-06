@@ -4,7 +4,8 @@
 
 struct cache_line
 {
-    uint64_t a, b;
+    char padding[56]; // Ryzen 4000 series has 64 byte cache lines
+    uint64_t a;
 };
 
 #define ARRAY_SIZE 100000
@@ -44,7 +45,11 @@ int main()
         data[i].a = 0;
     }
 
+#ifdef STRIDE
     single_threaded_striding();
+#else
+    single_threaded();
+#endif
 
     return 0;    
 }
